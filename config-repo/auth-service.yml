@@ -1,0 +1,39 @@
+server:
+ port: 8081
+
+spring:
+  application:
+    name: auth-service
+
+  datasource:
+   url: jdbc:postgresql://localhost:5432/mediflow_auth
+   driver-class-name: org.postgresql.Driver
+   username: postgres
+   password: PgAdmin@123
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+         issuer-uri: http://localhost:8180/realms/mediflow
+
+eureka:
+  client:
+    service-url:
+     defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+
+keycloak:
+ server-url: http://localhost:8180
+ admin-username: admin
+ admin-password: Admin@123
