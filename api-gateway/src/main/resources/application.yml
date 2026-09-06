@@ -1,0 +1,9 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  # All other config comes from config-server (config-repo/api-gateway.yml)
+  config:
+    import: optional:configserver:http://localhost:8888
