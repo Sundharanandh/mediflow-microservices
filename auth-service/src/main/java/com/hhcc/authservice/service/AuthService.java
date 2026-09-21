@@ -32,8 +32,6 @@ public class AuthService {
         User user = User.builder()
                 .username(request.getUsername())
                 .email(request.getEmail())
-                .firstName(request.getFirstName())
-                .lastName(request.getLastName())
                 .passwordHash(passwordEncoder.encode(request.getPassword()))
                 .role("PATIENT")
                 .active(true)
