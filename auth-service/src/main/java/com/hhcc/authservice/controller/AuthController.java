@@ -2,6 +2,8 @@ package com.hhcc.authservice.controller;
 
 import com.hhcc.authservice.dto.RegisterRequest;
 import com.hhcc.authservice.dto.RegisterResponse;
+import com.hhcc.authservice.dto.LoginRequest;
+import com.hhcc.authservice.dto.AuthResponse;
 import com.hhcc.authservice.model.User;
 import com.hhcc.authservice.service.AuthService;
 import jakarta.validation.Valid;
@@ -24,6 +26,11 @@ public class AuthController {
         RegisterResponse response=RegisterResponse.builder().id(user.getId()).username(user.getUsername()).email(user.getEmail()).role(user.getRole()).active(user.getActive()).build();
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest request) {
+        return ResponseEntity.ok(authService.login(request));
     }
 
     @GetMapping("/health")

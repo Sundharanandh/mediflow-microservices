@@ -15,12 +15,8 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-         issuer-uri: http://localhost:8180/realms/mediflow
+jwt:
+  secret: ${JWT_SECRET:12345678901234hjkouyqwtyeuahdbekw}
 
 eureka:
   client:
@@ -32,8 +28,3 @@ management:
     web:
       exposure:
         include: health,info,prometheus
-
-keycloak:
- server-url: http://localhost:8180
- admin-username: admin
- admin-password: Admin@123

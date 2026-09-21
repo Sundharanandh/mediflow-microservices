@@ -102,13 +102,13 @@ Guidance:
 2. Use orchestration for complex payment/refund/cancellation flows.
 3. Define compensation contracts and timeouts explicitly.
 
-## Security Architecture Review (OAuth2 + JWT)
+## Security Architecture Review (JWT)
 
-Direction is correct with Keycloak + JWT + gateway validation. To meet enterprise standards, add:
+The authentication service issues signed JWTs after BCrypt credential validation. The gateway and downstream services validate the same token locally. To meet enterprise standards, add:
 
 1. Access/refresh token lifecycle policy.
 2. Audience and scope checks at gateway and service layer.
-3. JWKS key rotation and token revocation strategy.
+3. Signing-key rotation and token revocation strategy.
 4. Service-to-service auth (client credentials and/or mTLS).
 5. Encryption in transit and at rest, including PHI protection.
 

@@ -1,8 +1,11 @@
 spring:
   application:
-    name: auth-service
-
+    name: patient-service
   config:
     import: "optional:configserver:http://localhost:8888"
+  jpa:
+    hibernate:
+      ddl-auto: update
+
 jwt:
   secret: ${JWT_SECRET:12345678901234hjkouyqwtyeuahdbekw}

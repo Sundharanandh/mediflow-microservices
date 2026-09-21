@@ -16,9 +16,6 @@ public class User extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "keycloak_user_id", nullable = false, unique = true, length = 100)
-    private String keycloakUserId;
-
     @Column(nullable = false, unique = true, length = 50)
     private String username;
 
@@ -30,6 +27,9 @@ public class User extends BaseEntity {
 
     @Column(nullable = false, length = 50)
     private String lastName;
+
+    @Column(name = "password_hash", length = 100)
+    private String passwordHash;
 
     @Column(nullable = false, length = 30)
     private String role;
